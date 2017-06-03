@@ -1,0 +1,14 @@
+applications:
+- name: pz-servicecontroller
+  host: pz-servicecontroller
+  path: pz-servicecontroller.jar
+  buildpack: java_buildpack_offline
+  memory: 1024M
+  instances: 1
+  timeout: 80
+  services:
+    - pz-kafka
+    - pz-mongodb
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    JBP_CONFIG_OPEN_JDK_JRE: '{ memory_calculator : { memory_sizes : { heap : 512m } } }'
